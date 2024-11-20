@@ -1,14 +1,84 @@
-
 <div class="container-fluid">
-  <app-page-title title="Export AIPN Cliam"  [breadcrumbItems]="breadCrumbItems"></app-page-title>
-
-  <!-- content-->
-
+  <app-page-title title="Export AIPN Cliam" [breadcrumbItems]="breadCrumbItems"></app-page-title>
   <div class="row">
-    <div class="col-xl-12">
+    <div class="col-12">
       <div class="card-box">
-        export-aipncliam works!
+        <h4 class="header-title">Export AIPN Cliam</h4>
+        <div class="row">
+          <div class="col-12">
+            <div class="p-2">
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Service Type</label>
+                <div class="col-sm-6">
+                  <select class="form-control" [(ngModel)]="data.ServiceType">
+                    <option value="IP">IP : ผู้ป่วยในทั่วไป</option>
+                    <option value="NA">NA : พักรอจำหน่าย</option>
+                    <option value="OS">OS : กรณีผู้ป่วยในพักรักษาตัวต่อเนื่องเกิน 180 วัน</option>
+                    <option value="PF">PF : เบิกแบบเหมาจ่าย</option>
+                    <option value="DS">DS : Day Surgery</option>
+                  </select></div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="example-password">Hospital Main</label>
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" [(ngModel)]="data.HMain"></div>
+              </div>
+              <div class="form-group row"><label
+                  class="col-sm-2 col-form-label">Admit Type</label>
+                <div class="col-sm-6">
+                  <select class="form-control" [(ngModel)]="data.AdmType">
+                    <option value=""></option>
+                    <option value="A">A : Accident</option>
+                    <option value="E">E : Emergency</option>
+                    <option value="C">C : Elective</option>
+                    <option value="L">L : Labor and Delivery</option>
+                    <option value="N">N : New born</option>
+                    <option value="U">U : Urgent</option>
+                    <option value="O">O : All other</option>
+                  </select></div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Admit Source</label>
+                <div class="col-sm-6">
+                  <select class="form-control" [(ngModel)]="data.AdmSource">
+                    <option value=""></option>
+                    <option value="O">O : OPD ในโรงพยาบาล</option>
+                    <option value="E">E : แผนก Emergency</option>
+                    <option value="S">S : หน่วยบริการอื่น ๆ ในโรงพยาบาล</option>
+                    <option value="B">B : เกิดในโรงพยาบาล</option>
+                    <option value="T">T : ส่งย้ายจวกโรงพยาบาลอื่น</option>
+                    <option value="R">R : Refer จากแพทย์/โรงพยาบาลอื่น
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Care As</label>
+                <div class="col-sm-6">
+                  <select class="form-control" [(ngModel)]="data.CareAs">
+                    <option value="M">M : รักษากับสถานพยาบาลตามสิทธิ</option>
+                    <option value="B">B : รักษากับสถานพยาบาลเครือข่าย</option>
+                    <option value="A">A : รักษากับสถานพยาบาล supra</option>
+                    <option value="X">X : รักษากับสถานพยาบาลประเภทอื่น ๆ</option>
+                    <option value="C">C : Contractor</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="example-password">AN</label>
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" [(ngModel)]="data.ANSearchKey"></div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-8 text-center">
+                  <button class="btn btn-md btn-info" (click)="export()">Export</button>
+                </div>
+              </div>
+              <hr>              
+            </div>
+          </div>
+        </div>
       </div>
-    </div><!-- end col -->
+    </div>
   </div>
 </div>
