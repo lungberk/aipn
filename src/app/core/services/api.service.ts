@@ -22,4 +22,9 @@ export class ApiService {
         const url = this.auth.getConfig.ws;
         return this.http.post<CCT_Master_Result>(url + ServiceName, { param: param });
     }
+    LoadMasterFile(param: CCT_Master_Param) {
+        const ServiceName = "LoadMasterFile";
+        const url = this.auth.getConfig.ws;
+        return this.http.post<CCT_Master_Result>(url + ServiceName, { param: param });
+    }
 }
