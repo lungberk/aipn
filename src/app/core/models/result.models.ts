@@ -231,3 +231,13 @@ export class CCT_INVOICE_DTL_Detail {
         this.ClaimAmt = "";
     }
 }
+export class CCT_MasterXML_Result {
+    ResultStatus: boolean;
+    ErrorMessage: string;
+    FileDataBase64: string;
+    constructor() {
+        this.ResultStatus = false;
+        this.ErrorMessage = "";
+        this.FileDataBase64 = "";
+    }
+}

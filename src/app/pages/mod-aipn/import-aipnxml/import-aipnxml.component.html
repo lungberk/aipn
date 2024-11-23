@@ -1,13 +1,554 @@
 <div class="container-fluid">
-  <app-page-title title="Import AIPN To XML"  [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  <app-page-title title="Import AIPN To XML" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  <div class="card-box">
 
-  <!-- content-->
+<div>
+  <button class="btn btn-primary btn-lg mr-2">Gen XML</button>
+  <button class="btn btn-info btn-lg">Import XML To View</button>
+</div>
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4>Header</h4>
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Author ID</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-6">
+              <span class="text-label">Author Name</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Effective DateTime</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4>ClaimAuth</h4>
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">EventCode</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+            <div class="col-6">
+              <span class="text-label">Hmain</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Hcare</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
 
-  <div class="row">
-    <div class="col-xl-12">
-      <div class="card-box">
-        import-aipncliam works!
-      </div>
-    </div><!-- end col -->
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4>IPADT</h4>
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">AN</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">HN</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">IDType</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">PID</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Title</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Name</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">BirthDate</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Sex</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Status</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">จังหวัด</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">อำเภอ</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">AdmType</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">AdmSource</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Admit DateTime</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Discharge DateTime</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Leave Day</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Discharge Stat</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Disch Type</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Amd WT</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Discharge Ward</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Dept</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4>IPDx</h4>
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <span class="text-label">Dx Type</span>
+                <div class="text-dese">
+                  <input class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <span class="text-label">Code Sys</span>
+                <div class="text-dese">
+                  <input class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <span class="text-label">ICD Code</span>
+                <div class="text-dese">
+                  <input class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <span class="text-label">Diag Term</span>
+                <div class="text-dese">
+                  <input class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <span class="text-label">DR</span>
+                <div class="text-dese">
+                  <input class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <span class="text-label">Diag Date</span>
+                <div class="text-dese">
+                  <input class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6 text-right">
+                <button class="btn btn-md btn-primary">Apply</button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="table-responsive">
+              <table class="table mb-0">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>DxType</th>
+                    <th>Code Sys</th>
+                    <th>ICD Code</th>
+                    <th>Diag Term</th>
+                    <th>DR</th>
+                    <th>Diag Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4>IPOp</h4>
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <span class="text-label">Dx Type</span>
+                <div class="text-dese">
+                  <input class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <span class="text-label">Code Sys</span>
+                <div class="text-dese">
+                  <input class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <span class="text-label">ICDCM Code</span>
+                <div class="text-dese">
+                  <input class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <span class="text-label">Proc Term</span>
+                <div class="text-dese">
+                  <input class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <span class="text-label">DR</span>
+                <div class="text-dese">
+                  <input class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <span class="text-label">Date In</span>
+                <div class="text-dese">
+                  <input class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <span class="text-label">Date Out</span>
+                <div class="text-dese">
+                  <input class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <span class="text-label">Location</span>
+                <div class="text-dese">
+                  <input class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6 text-right">
+                <button class="btn btn-md btn-primary">Apply</button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="table-responsive">
+              <table class="table mb-0">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>DxType</th>
+                    <th>Code Sys</th>
+                    <th>ICDCM Code</th>
+                    <th>Diag Term</th>
+                    <th>DR</th>
+                    <th>Diag Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td> - </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4>Invoice</h4>
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Invoice Number</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6">
+              <span class="text-label">Invoice DateTime</span>
+              <div class="text-dese">
+                <input class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="table-responsive">
+              <table class="table mb-0">
+                <thead>
+                  <tr>
+                    <th><mat-checkbox class="example-margin" [(ngModel)]="checked">All</mat-checkbox></th>
+                    <th>Service Date</th>
+                    <th>LC</th>
+                    <th>QTY</th>
+                    <th>Unit QYT</th>
+                    <th>Charge Amt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of ListBill; index as i">
+                    <td>
+                      <mat-checkbox class="example-margin" [(ngModel)]="checked"></mat-checkbox>
+                    </td>
+                    <td><input class="form-control" type="text" [(ngModel)]="item.ServiceDate"></td>
+                    <td>{{item.LCCodeName}}</td>
+                    <td><input class="form-control" type="text" [(ngModel)]="item.QTY"></td>
+                    <td><input class="form-control" type="text" [(ngModel)]="item.UnitQYT"></td>
+                    <td><input class="form-control" type="text" [(ngModel)]="item.ChargeAmt"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
 </div>

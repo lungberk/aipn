@@ -2,8 +2,8 @@ import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, JsonpInterceptor, HttpHeaders } from "@angular/common/http";
 import { AuthenticationService } from "./auth.service";
 import { MessageService } from "./message.service";
-import { CCT_Master_Param } from '../models/param.models';
-import { CCT_Master_Result } from '../models/result.models';
+import { CCT_Master_Param, CCT_MasterXML_Param } from '../models/param.models';
+import { CCT_Master_Result, CCT_MasterXML_Result } from '../models/result.models';
 @Injectable({
     providedIn: 'root'
 })
@@ -26,5 +26,10 @@ export class ApiService {
         const ServiceName = "LoadMasterFile";
         const url = this.auth.getConfig.ws;
         return this.http.post<CCT_Master_Result>(url + ServiceName, { param: param });
+    }
+    LoadMasterFileXML(param: CCT_MasterXML_Param) {
+        const ServiceName = "LoadMasterFileXML";
+        const url = this.auth.getConfig.ws;
+        return this.http.post<CCT_MasterXML_Result>(url + ServiceName, { param: param });
     }
 }
