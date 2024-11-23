@@ -10,7 +10,7 @@
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for="example-password">File</label>
                 <div class="col-sm-6">
-                  <input accept="application/xml" class="form-control" type="file"
+                  <input id="filexml" accept="application/xml" class="form-control" type="file"
                   (click)="$event.target.value = null"
                   (change)="handleUpload($event)">
                 </div>

@@ -3,13 +3,7 @@ import { CCT_Master_Param } from 'src/app/core/models/param.models';
 import { ApiService } from 'src/app/core/services/api.service';
 import { AuthenticationService } from 'src/app/core/services/auth.service';
 import { MessageService } from 'src/app/core/services/message.service';
-import { AsyncSubject, Observable, ReplaySubject } from 'rxjs';
-export interface SelectedFiles {
-  name: string;
-  file: any;
-  base64?: string;
-}
-
+import $ from "jquery";
 @Component({
   selector: 'app-upload-aipnxml',
   templateUrl: './upload-aipnxml.component.html',
@@ -19,6 +13,7 @@ export class UploadAIPNXMLComponent implements OnInit {
   data = new CCT_Master_Param();
   base64Output: any;
   FileName = "";
+  filexml: any;
   constructor(
     private api: ApiService,
     private auth: AuthenticationService,
@@ -39,6 +34,11 @@ export class UploadAIPNXMLComponent implements OnInit {
     }
     return true;
   }
+  clearvalue() {
+    this.FileName = "";
+    this.base64Output = "";
+    $("#filexml").val("");
+  }
   export() {
     if (!this.TestValue()) {
       return;
@@ -47,6 +47,7 @@ export class UploadAIPNXMLComponent implements OnInit {
     param.FileName = this.FileName;
     param.FileDataBase64 = this.base64Output;
     this.api.LoadMasterFile(param).subscribe(rs => {
+      this.clearvalue();
       if (rs.ResultStatus) {
         this.msg.showSuccess("บันทึกข้อมูลเรียบร้อย");
       } else if (rs.ErrorMessage) {
