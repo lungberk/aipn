@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CCT_MasterXML_BillItems_Param } from 'src/app/core/models/param.models';
+import { CCT_MasterXML_BillItems_Param, CCT_MasterXML_Hearder_Param } from 'src/app/core/models/param.models';
 
 @Component({
   selector: 'app-import-aipnxml',
@@ -7,12 +7,16 @@ import { CCT_MasterXML_BillItems_Param } from 'src/app/core/models/param.models'
   styleUrls: ['./import-aipnxml.component.scss']
 })
 export class ImportAIPNXMLComponent implements OnInit {
+  DataHearder = new CCT_MasterXML_Hearder_Param();
   DataBill = new CCT_MasterXML_BillItems_Param();
   ListBill = new Array<CCT_MasterXML_BillItems_Param>();
   constructor() { }
 
   ngOnInit() {
     this.SetValueInvoice();
+  }
+  SetDefaultHeader() {
+    
   }
   SetValueInvoice () {
     const d1 = new CCT_MasterXML_BillItems_Param();

@@ -61,7 +61,7 @@ export class CCT_MasterXML_Hearder_Param {
     ServiceEvent: string;
     AuthorID: string;
     AuthorName: string;
-    EffectiveTime: string;
+    EffectiveDateTime: string;
 
     constructor() {
         this.DocClass = "";
@@ -70,7 +70,7 @@ export class CCT_MasterXML_Hearder_Param {
         this.ServiceEvent = "";
         this.AuthorID = "";
         this.AuthorName = "";
-        this.EffectiveTime = "";
+        this.EffectiveDateTime = "";
     }
 }
 export class CCT_MasterXML_ClaimAuth_Param {

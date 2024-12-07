@@ -1,0 +1,157 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@page {
+  size: auto;
+}
+.text-HP9 {
+    color: #004a49;
+}
+.text-P9 {
+    color: #0c7d83;
+}
+.text-P1{
+  color: #2f4050;
+}
+.pointer{
+    cursor: pointer;
+}
+.ngx-select__toggle-caret {
+  display: none;
+}
+
+.w-60 {
+  min-width: 60px;
+}
+.ngx-select__clear-icon {
+  max-width: 0.7em;
+  max-height: .70em;
+  color: rgb(144, 144, 144);
+  margin-bottom: 1px;
+}
+::-webkit-scrollbar {
+  width: 12px;/*rigth*/
+  height: 8px;/*bottom*/
+}
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+} /* the new scrollbar will have a flat appearance with the set background color */
+
+::-webkit-scrollbar-thumb {
+  background-color: darkturquoise;
+} /* this will style the thumb, ignoring the track */
+
+::-webkit-scrollbar-button {
+  /* background-color: #7c2929; */
+} /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+
+::-webkit-scrollbar-corner {
+  background-color: aliceblue;
+} /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+.mat-tooltip.f14 {
+  font-size: 14px;
+}
+.mat-tooltip.f12 {
+  font-size: 12px;
+}
+.mat-tooltip.tooltip-Conceal {
+  background-color: #f8ac59 !important;
+  border-color: #f8ac59 !important;
+}
+.mat-tooltip.tooltip-Susspen {
+  background-color: red !important;
+  border-color: red !important;
+}
+.mat-tooltip.tooltip-OSCR {
+  background-color: #00a8ed !important;
+  border-color: #00a8ed !important;
+}
+
+.mat-icon-button {
+  padding: 0;
+  min-width: 0;
+  width: 300px;
+  height: 300px;
+  flex-shrink: 0;
+  line-height: 300px;
+  border-radius: 50%;
+}
+
+
+.datepickerOne .mat-calendar-header {
+  /* background-color: chocolate; */
+  padding: 0px 0 0 0;
+}
+.datepickerOne .mat-calendar-controls {
+  margin: 1% calc(33% / 7 - 16px);
+}
+.datepickerOne .mat-calendar {
+  height: inherit;
+}
+.fitrow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.table-responsive-b {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.text-main {
+  color: #063756 !important;
+}
+
+.mat-cell, .mat-footer-cell {
+  font-size: 12px;
+}
+.curve {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+.cb_white{
+  border: 1px solid #1ab394!important;
+
+}
+.mat-select-panel {
+  margin-top: 2.7em !important;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='rgba(0,0,0,.54)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 97%;
+  background-position-y: 5px;
+  border: 1px solid #dfdfdf;
+  border-radius: 2px;
+  margin-right: 2rem;
+  padding: 1rem;
+  padding-right: 2rem;
+}
+.form-select {
+  background-color: #FFFFFF;
+  background-image: aliceblue;
+  border: 1px solid #e5e6e7;
+  border-radius: 5px;
+  color: inherit;
+  display: block;
+  padding: 6px 12px;
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+  width: 100%;
+}
+.mat-checkbox-layout {
+  margin-bottom: 1px !important;
+}
+.mat-tab-group.mat-background-primary .mat-tab-label.mat-tab-disabled, .mat-tab-group.mat-background-primary .mat-tab-link.mat-tab-disabled, .mat-tab-nav-bar.mat-background-primary .mat-tab-label.mat-tab-disabled, .mat-tab-nav-bar.mat-background-primary .mat-tab-link.mat-tab-disabled {
+  /* color: #ffffff00 !important; */
+  display: none;
+}
+.mat-tab-label-active {
+  background-color: #c4ece4 !important;
+}
+.text-label {
+  float: left;
+}

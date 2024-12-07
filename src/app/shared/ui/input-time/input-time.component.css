@@ -1,0 +1,18 @@
+.icon{
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    float: right;
+    margin-top: 8px;
+    margin-left: -28px;
+    font-size: 1.7em;
+  }
+  .bg-valid{
+    background-color: #f3c9c9;
+  }
+  input:read-only {
+    background-color: #e9ecef;
+  }
+  .form-control {
+    display: inline !important;
+  }
