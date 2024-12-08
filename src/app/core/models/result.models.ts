@@ -241,3 +241,11 @@ export class CCT_MasterXML_Result {
         this.FileDataBase64 = "";
     }
 }
+export class EnumInfo {
+	Code: string;
+	NameShow: string;
+	constructor() {
+		this.Code = "";
+		this.NameShow = "";
+	}
+}

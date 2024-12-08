@@ -1,3 +1,6 @@
-<input class="form-control" [matDatepicker]="picker" placeholder="mm/dd/yyyy">
-<i class="far fa-calendar-alt pointer icon" (click)="picker.open()"></i>
-<mat-datepicker #picker></mat-datepicker>
+<input class="form-control" [(ngModel)]="datevalue" [matDatepicker]="pickerDatetime" (dateChange)="dateChange($event)"
+  class="form-control invisible" placeholder="dd/mm/yyyy">
+<input class="form-control" [(ngModel)]="dateshow" (change)="Change($event.target.value)" class="form-control"
+  placeholder="dd/mm/yyyy">
+<i class="far fa-calendar-alt pointer icon" (click)="pickerDatetime.open()"></i>
+<mat-datepicker #pickerDatetime></mat-datepicker>

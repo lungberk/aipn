@@ -11,6 +11,7 @@ import { LayoutsModule } from './layouts/layouts.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToastrModule } from 'ng6-toastr-notifications';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -25,9 +26,9 @@ import { ToastrModule } from 'ng6-toastr-notifications';
     ToastrModule.forRoot()
   ],
   providers: [
+    DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
     // provider used to create fake backend
     FakeBackendProvider
   ],

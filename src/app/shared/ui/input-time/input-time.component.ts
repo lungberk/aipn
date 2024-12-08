@@ -7,7 +7,7 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 export class InputTimeComponent implements OnInit {
   @Output() getValue: EventEmitter<string> = new EventEmitter();
   @Input() setValue = "";
-  @Input() placeholder = "";
+  @Input() placeholder = "hh:mm";
   @Input() disabled = false;
   @Input() curve = true;
   @Input() readonly = false;

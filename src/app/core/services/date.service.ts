@@ -1,11 +1,28 @@
 import { Injectable } from '@angular/core';
+import { DatePipe } from '@angular/common';
 @Injectable({providedIn: 'root'})
 export class DateService {
-  constructor() { }
+  constructor(
+    private datePipeAg: DatePipe
+  ) { }
   getCurrentDate() {
     return new Date();
   }
-
+  getCurrentDateStr() {
+    return this.datePipeAg.transform(new Date(), "yyyy-MM-dd");
+  }
+  getCurrentDateTimeStr() {
+    return this.datePipeAg.transform(new Date(), "yyyy-MM-ddTHH:mm:ss");
+  }
+  getCurrentDateTimeStrFrom() {
+    return this.datePipeAg.transform(new Date(), "yyyy-MM-ddT00:00:00");
+  }
+  getCurrentDateTimeStrTo() {
+    return this.datePipeAg.transform(new Date(), "yyyy-MM-ddT23:59:59");
+  }
+  getCurrentTimeHHmm() {
+    return this.datePipeAg.transform(new Date(), "HH:mm");
+  }
   getDateTimeTick() {
     const currentDateTime = new Date();
     const ticks = ((currentDateTime.getTime() * 10000) + 621355968000000000);

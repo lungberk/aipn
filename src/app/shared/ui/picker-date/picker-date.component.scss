@@ -7,3 +7,10 @@
     margin-left: -28px;
     font-size: 1.3em;
 }
+.invisible{
+    display: block;
+    visibility: hidden;
+    height: 10;
+    width: 0;
+    position: absolute;
+  }

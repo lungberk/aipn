@@ -2,11 +2,12 @@
   <app-page-title title="Import AIPN To XML" [breadcrumbItems]="breadCrumbItems"></app-page-title>
   <div class="card-box">
     <div>
-      <button class="btn btn-primary btn-lg mr-2">Gen XML</button>
-      <button class="btn btn-info btn-lg">Import XML To View</button>
+      <button class="btn btn-primary btn-lg mr-2" (click)="GenXML()">Gen XML</button>
+      <button class="btn btn-info btn-lg mr-2">Import XML To View</button>
+      <button class="btn btn-warning btn-lg" (click)="Clear()">Clear</button>
     </div>
-    <hr/>
-    <div style="height: 78vh; overflow: scroll;">
+    <hr />
+    <div style="height: 65vh; overflow: scroll;">
       <mat-accordion class="example-headers-align" multi>
         <mat-expansion-panel [expanded]="true">
           <mat-expansion-panel-header>
@@ -21,13 +22,13 @@
               <div class="col-6">
                 <span class="text-label">Author ID</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataHearder.AuthorID">
                 </div>
               </div>
               <div class="col-6">
                 <span class="text-label">Author Name</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataHearder.AuthorName">
                 </div>
               </div>
             </div>
@@ -37,12 +38,14 @@
                 <div class="text-dese">
                   <div class="row">
                     <div class="col-8">
-                      <app-picker-date></app-picker-date>
+                      <app-picker-date #DataHearder_EffectiveDateTime
+                        (getValue)="DataHearder.EffectiveDateTime=$event"></app-picker-date>
                     </div>
                     <div class="col-4">
-                      <app-input-time></app-input-time>
+                      <app-input-time #DataHearder_EffectiveTime
+                        (getValue)="DataHearder.EffectiveTime=$event"></app-input-time>
                     </div>
-                  </div> 
+                  </div>
                 </div>
               </div>
             </div>
@@ -61,13 +64,13 @@
               <div class="col-6">
                 <span class="text-label">EventCode</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataClaimAuth.EventCode">
                 </div>
               </div>
               <div class="col-6">
                 <span class="text-label">Hmain</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataClaimAuth.Hmain">
                 </div>
               </div>
             </div>
@@ -75,7 +78,7 @@
               <div class="col-6">
                 <span class="text-label">Hcare</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataClaimAuth.Hcare">
                 </div>
               </div>
             </div>
@@ -95,7 +98,7 @@
               <div class="col-6">
                 <span class="text-label">AN</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataIPADT.AN">
                 </div>
               </div>
             </div>
@@ -103,7 +106,7 @@
               <div class="col-6">
                 <span class="text-label">HN</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataIPADT.HN">
                 </div>
               </div>
             </div>
@@ -111,13 +114,16 @@
               <div class="col-6">
                 <span class="text-label">IDType</span>
                 <div class="text-dese">
-                  <select class="form-control">
+                  <select class="form-control" [(ngModel)]="DataIPADT.IDType">
                     <option value=""></option>
-                    <option value="0">0 : บัตรประชาชน</option>
+                    <option *ngFor="let i of IDTYPEOptions" [value]="IDTYPE[i]">
+                      {{IDTYPE[i]}} : {{i}}
+                    </option>
+                    <!-- <option value="0">0 : บัตรประชาชน</option>
                     <option value="1">1 : ต่างด้าว</option>
                     <option value="2">2 : ใบอนุญาตฯ</option>
                     <option value="3">3 : Passport</option>
-                    <option value="9">9 : อื่นๆ</option>
+                    <option value="9">9 : อื่นๆ</option> -->
                   </select>
                 </div>
               </div>
@@ -126,7 +132,7 @@
               <div class="col-6">
                 <span class="text-label">PID</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataIPADT.PID">
                 </div>
               </div>
             </div>
@@ -134,7 +140,7 @@
               <div class="col-6">
                 <span class="text-label">Title</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataIPADT.Title">
                 </div>
               </div>
             </div>
@@ -142,7 +148,7 @@
               <div class="col-6">
                 <span class="text-label">Name</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataIPADT.Name">
                 </div>
               </div>
             </div>
@@ -150,7 +156,7 @@
               <div class="col-6">
                 <span class="text-label">BirthDate</span>
                 <div class="text-dese">
-                  <app-picker-date></app-picker-date>
+                  <app-picker-date #DataIPADT_BirthDate (getValue)="DataIPADT.BirthDate=$event"></app-picker-date>
                 </div>
               </div>
             </div>
@@ -158,10 +164,16 @@
               <div class="col-6">
                 <span class="text-label">Sex</span>
                 <div class="text-dese">
-                  <select class="form-control">
+                  <select class="form-control" [(ngModel)]="DataIPADT.Sex">
                     <option value=""></option>
-                    <option value="1">1 : ชาย</option>
-                    <option value="2">2 : หญิง</option>
+                    <option *ngFor="let i of SEXOptions" [value]="SEX[i]">
+                      {{SEX[i]}} : {{i}}
+                    </option>
+                    <!-- <option *ngFor="let i of SEXOptions" [value]="i.Code">
+                      {{i.Code}} : {{i.NameShow}}
+                    </option> -->
+                    <!-- <option value="1">1 : ชาย</option>
+                    <option value="2">2 : หญิง</option> -->
                   </select>
                 </div>
               </div>
@@ -170,12 +182,18 @@
               <div class="col-6">
                 <span class="text-label">Status</span>
                 <div class="text-dese">
-                  <select class="form-control">
+                  <select class="form-control" [(ngModel)]="DataIPADT.Status">
                     <option value=""></option>
-                    <option value="1">1 : โสด</option>
+                    <option *ngFor="let i of MARRIAGEOptions" [value]="MARRIAGE[i]">
+                      {{MARRIAGE[i]}} : {{i}}
+                    </option>
+                    <!-- <option *ngFor="let i of MARRIAGEOptions" [value]="i.Code">
+                      {{i.Code}} : {{i.NameShow}}
+                    </option> -->
+                    <!-- <option value="1">1 : โสด</option>
                     <option value="2">2 : สมรส</option>
                     <option value="3">3 : หม้าย/หย่า</option>
-                    <option value="4">4 : อื่นๆ</option>
+                    <option value="4">4 : อื่นๆ</option> -->
                   </select>
                 </div>
               </div>
@@ -184,7 +202,7 @@
               <div class="col-6">
                 <span class="text-label">จังหวัด</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataIPADT.Province">
                 </div>
               </div>
             </div>
@@ -192,7 +210,7 @@
               <div class="col-6">
                 <span class="text-label">อำเภอ</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataIPADT.Amphoe">
                 </div>
               </div>
             </div>
@@ -200,16 +218,22 @@
               <div class="col-6">
                 <span class="text-label">National</span>
                 <div class="text-dese">
-                  <select class="form-control">
+                  <select class="form-control" [(ngModel)]="DataIPADT.National">
                     <option value=""></option>
-                    <option value="44">44 : จีน</option>
+                    <option *ngFor="let i of NATIONOptions" [value]="NATION[i]">
+                      {{NATION[i]}} : {{i}}
+                    </option>
+                    <!-- <option *ngFor="let i of NATIONOptions" [value]="i.Code">
+                      {{i.Code}} : {{i.NameShow}}
+                    </option> -->
+                    <!-- <option value="44">44 : จีน</option>
                     <option value="45">45 : อินเดีย</option>
                     <option value="46">46 : เวียดนาม</option>
                     <option value="48">48 : พม่า</option>
                     <option value="56">56 : ลาว</option>
                     <option value="57">57 : กัมพูชา</option>
                     <option value="97">97 : อื่นๆ</option>
-                    <option value="99">99 : ไทย</option>
+                    <option value="99">99 : ไทย</option> -->
                   </select>
                 </div>
               </div>
@@ -218,15 +242,21 @@
               <div class="col-6">
                 <span class="text-label">AdmType</span>
                 <div class="text-dese">
-                  <select class="form-control">
+                  <select class="form-control" [(ngModel)]="DataIPADT.AdmType">
                     <option value=""></option>
-                    <option value="A">A : Accident</option>
+                    <option *ngFor="let i of AdmTypeOptions" [value]="AdmType[i]">
+                      {{AdmType[i]}} : {{i}}
+                    </option>
+                    <!-- <option *ngFor="let i of AdmTypeOptions" [value]="i.Code">
+                      {{i.Code}} : {{i.NameShow}}
+                    </option> -->
+                    <!-- <option value="A">A : Accident</option>
                     <option value="E">E : Emergency</option>
                     <option value="C">C : Elective</option>
                     <option value="L">L : Labor and delivery</option>
                     <option value="N">N : Newborn</option>
                     <option value="U">U : Urgent</option>
-                    <option value="O">O : All other</option>
+                    <option value="O">O : All other</option> -->
                   </select>
                 </div>
               </div>
@@ -235,14 +265,20 @@
               <div class="col-6">
                 <span class="text-label">AdmSource</span>
                 <div class="text-dese">
-                  <select class="form-control">
+                  <select class="form-control" [(ngModel)]="DataIPADT.AdmSource">
                     <option value=""></option>
-                    <option value="O">O : OPD ใน รพ.</option>
+                    <option *ngFor="let i of AdmSourceOptions" [value]="AdmSource[i]">
+                      {{AdmSource[i]}} : {{i}}
+                    </option>
+                    <!-- <option *ngFor="let i of AdmSourceOptions" [value]="i.Code">
+                      {{i.Code}} : {{i.NameShow}}
+                    </option> -->
+                    <!-- <option value="O">O : OPD ใน รพ.</option>
                     <option value="E">E : แผนก Emergency</option>
                     <option value="S">S : หน่วยบริการอื่นๆ ใน รพ.</option>
                     <option value="B">B : เกิดใน รพ.</option>
                     <option value="T">T : ส่งย้ายจาก รพ. อื่น</option>
-                    <option value="R">R : Refer จากแพทย์/รพ. อื่น</option>
+                    <option value="R">R : Refer จากแพทย์/รพ. อื่น</option> -->
                   </select>
                 </div>
               </div>
@@ -253,12 +289,13 @@
                 <div class="text-dese">
                   <div class="row">
                     <div class="col-8">
-                      <app-picker-date></app-picker-date>
+                      <app-picker-date #DataIPADT_AdmitDateTime
+                        (getValue)="DataIPADT.AdmitDateTime=$event"></app-picker-date>
                     </div>
                     <div class="col-4">
-                      <app-input-time></app-input-time>
+                      <app-input-time #DataIPADT_AdmitTime (getValue)="DataIPADT.AdmitTime=$event"></app-input-time>
                     </div>
-                  </div>                  
+                  </div>
                 </div>
               </div>
             </div>
@@ -268,12 +305,14 @@
                 <div class="text-dese">
                   <div class="row">
                     <div class="col-8">
-                      <app-picker-date></app-picker-date>
+                      <app-picker-date #DataIPADT_DischargeDateTime
+                        (getValue)="DataIPADT.DischargeDateTime=$event"></app-picker-date>
                     </div>
                     <div class="col-4">
-                      <app-input-time></app-input-time>
+                      <app-input-time #DataIPADT_DischargeTime
+                        (getValue)="DataIPADT.DischargeTime=$event"></app-input-time>
                     </div>
-                  </div>  
+                  </div>
                 </div>
               </div>
             </div>
@@ -281,7 +320,7 @@
               <div class="col-6">
                 <span class="text-label">Leave Day</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataIPADT.LeaveDay">
                 </div>
               </div>
             </div>
@@ -289,7 +328,24 @@
               <div class="col-6">
                 <span class="text-label">Discharge Stat</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <select class="form-control" [(ngModel)]="DataIPADT.DischargeStat">
+                    <option value=""></option>
+                    <option *ngFor="let i of DischStatOptions" [value]="DischStat[i]">
+                      {{DischStat[i]}} : {{i}}
+                    </option>
+                    <!-- <option *ngFor="let i of DischStatOptions" [value]="i.Code">
+                      {{i.Code}} : {{i.NameShow}}
+                    </option> -->
+                    <!-- <option value="1">1 : Complete recovery</option>
+                    <option value="2">2 : Improved</option>
+                    <option value="3">3 : Not improved</option>
+                    <option value="4">4 : Normal delivery</option>
+                    <option value="5">5 : Un-delivery</option>
+                    <option value="6">6 : Normal child d/c with mother</option>
+                    <option value="7">7 : Normal child d/c separate</option>
+                    <option value="8">8 : Stillbirth</option>
+                    <option value="9">9 : Dead</option> -->
+                  </select>
                 </div>
               </div>
             </div>
@@ -297,7 +353,22 @@
               <div class="col-6">
                 <span class="text-label">Disch Type</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <select class="form-control" [(ngModel)]="DataIPADT.DischType">
+                    <option value=""></option>
+                    <option *ngFor="let i of DischTypeOptions" [value]="DischType[i]">
+                      {{DischType[i]}} : {{i}}
+                    </option>
+                    <!-- <option *ngFor="let i of DischTypeOptions" [value]="i.Code">
+                      {{i.Code}} : {{i.NameShow}}
+                    </option> -->
+                    <!-- <option value="1">1 : With approval</option>
+                    <option value="2">2 : Against advice</option>
+                    <option value="3">3 : Escape</option>
+                    <option value="4">4 : By transfer</option>
+                    <option value="5">5 : Other</option>
+                    <option value="8">8 : Dead autopsy</option>
+                    <option value="9">9 : Dead not autopsy</option> -->
+                  </select>
                 </div>
               </div>
             </div>
@@ -305,7 +376,7 @@
               <div class="col-6">
                 <span class="text-label">Amd WT</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataIPADT.AmdWT">
                 </div>
               </div>
             </div>
@@ -313,7 +384,7 @@
               <div class="col-6">
                 <span class="text-label">Discharge Ward</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataIPADT.DischargeWard">
                 </div>
               </div>
             </div>
@@ -321,7 +392,27 @@
               <div class="col-6">
                 <span class="text-label">Dept</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <select class="form-control" [(ngModel)]="DataIPADT.Dept">
+                    <option value=""></option>
+                    <option *ngFor="let i of DeptOptions" [value]="Dept[i]">
+                      {{Dept[i]}} : {{i}}
+                    </option>
+                    <!-- <option *ngFor="let i of DeptOptions" [value]="i.Code">
+                      {{i.Code}} : {{i.NameShow}}
+                    </option> -->
+                    <!-- <option value="01">01 :อายุรกรรม</option>
+                    <option value="02">02 : ศัลยกรรม</option>
+                    <option value="03">03 : สูติกรรม</option>
+                    <option value="04">04 : นรีเวชกรรม</option>
+                    <option value="05">05 : กุมารเวช</option>
+                    <option value="06">06 : โสตศอนาสิก</option>
+                    <option value="07">07 : จักษุ</option>
+                    <option value="08">08 : ศัลยกรรมกระดูก</option>
+                    <option value="09">09 : จิตเวช</option>
+                    <option value="10">10 : รังสีวิทยา</option>
+                    <option value="11">11 : ทันตกรรม</option>
+                    <option value="12">12 : อื่นๆ</option> -->
+                  </select>
                 </div>
               </div>
             </div>
@@ -342,7 +433,20 @@
                 <div class="col-6">
                   <span class="text-label">Dx Type</span>
                   <div class="text-dese">
-                    <input class="form-control" type="text">
+                    <select class="form-control" [(ngModel)]="DataIPDx.DxType">
+                      <option value=""></option>
+                      <option *ngFor="let i of DxTypeOptions" [value]="DxType[i]">
+                        {{DxType[i]}} : {{i}}
+                      </option>
+                      <!-- <option *ngFor="let i of DxTypeOptions" [value]="i.Code">
+                        {{i.Code}} : {{i.NameShow}}
+                      </option> -->
+                      <!-- <option value="1">1 : Principal diag</option>
+                      <option value="2">2 : Comorbidity</option>
+                      <option value="3">3 : Complication</option>
+                      <option value="4">4 : Other Dx</option>
+                      <option value="5">5 : External cause</option> -->
+                    </select>
                   </div>
                 </div>
               </div>
@@ -350,7 +454,7 @@
                 <div class="col-6">
                   <span class="text-label">Code Sys</span>
                   <div class="text-dese">
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" [(ngModel)]="DataIPDx.CodeSys">
                   </div>
                 </div>
               </div>
@@ -358,7 +462,7 @@
                 <div class="col-6">
                   <span class="text-label">ICD Code</span>
                   <div class="text-dese">
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" [(ngModel)]="DataIPDx.ICDCode">
                   </div>
                 </div>
               </div>
@@ -366,7 +470,7 @@
                 <div class="col-6">
                   <span class="text-label">Diag Term</span>
                   <div class="text-dese">
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" [(ngModel)]="DataIPDx.DiagTerm">
                   </div>
                 </div>
               </div>
@@ -374,7 +478,7 @@
                 <div class="col-6">
                   <span class="text-label">DR</span>
                   <div class="text-dese">
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" [(ngModel)]="DataIPDx.DR">
                   </div>
                 </div>
               </div>
@@ -382,13 +486,13 @@
                 <div class="col-6">
                   <span class="text-label">Diag Date</span>
                   <div class="text-dese">
-                    <input class="form-control" type="text">
+                    <app-picker-date #DataIPDx_DiagDate (getValue)="DataIPDx.DiagDate=$event"></app-picker-date>
                   </div>
                 </div>
               </div>
               <div class="row mb-2">
                 <div class="col-6 text-right">
-                  <button class="btn btn-md btn-primary">Apply</button>
+                  <button class="btn btn-md btn-primary" (click)="Apply_DataIPDx()">Apply</button>
                 </div>
               </div>
             </div>
@@ -398,42 +502,26 @@
                   <thead>
                     <tr>
                       <th>#</th>
+                      <th>#</th>
                       <th>DxType</th>
                       <th>Code Sys</th>
                       <th>ICD Code</th>
                       <th>Diag Term</th>
                       <th>DR</th>
-                      <th>Diag Date</th>
+                      <th>DR</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                    </tr>
+                    <tr *ngFor="let item of ListDataIPDx;">
+                      <th scope="row"><button class="btn btn-sm btn-danger" (click)="Delete_DataIPDx(item)">Delete</button></th>
+                      <th scope="row">{{item.index}}</th>
+                      <td>{{DxType[item.DxType]}}</td>
+                      <td>{{item.CodeSys}}</td>
+                      <td>{{item.ICDCode}}</td>
+                      <td>{{item.DiagTerm}}</td>
+                      <td>{{item.DR}}</td>
+                      <td>{{item.DiagDate}}</td>
+                    </tr>                    
                   </tbody>
                 </table>
               </div>
@@ -452,17 +540,9 @@
             <div>
               <div class="row mb-2">
                 <div class="col-6">
-                  <span class="text-label">Dx Type</span>
-                  <div class="text-dese">
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-2">
-                <div class="col-6">
                   <span class="text-label">Code Sys</span>
                   <div class="text-dese">
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" [(ngModel)]="DataIPDp.CodeSys">
                   </div>
                 </div>
               </div>
@@ -470,7 +550,7 @@
                 <div class="col-6">
                   <span class="text-label">ICDCM Code</span>
                   <div class="text-dese">
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" [(ngModel)]="DataIPDp.ICDCMCode">
                   </div>
                 </div>
               </div>
@@ -478,7 +558,7 @@
                 <div class="col-6">
                   <span class="text-label">Proc Term</span>
                   <div class="text-dese">
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" [(ngModel)]="DataIPDp.ProcTerm">
                   </div>
                 </div>
               </div>
@@ -486,7 +566,7 @@
                 <div class="col-6">
                   <span class="text-label">DR</span>
                   <div class="text-dese">
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" [(ngModel)]="DataIPDp.DR">
                   </div>
                 </div>
               </div>
@@ -494,7 +574,16 @@
                 <div class="col-6">
                   <span class="text-label">Date In</span>
                   <div class="text-dese">
-                    <input class="form-control" type="text">
+                    <div class="row">
+                      <div class="col-8">
+                        <app-picker-date #DataIPDp_DateIN
+                          (getValue)="DataIPDp.DateIN=$event"></app-picker-date>
+                      </div>
+                      <div class="col-4">
+                        <app-input-time #DataIPDp_DateINTime
+                          (getValue)="DataIPDp.DateINTime=$event"></app-input-time>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -502,7 +591,16 @@
                 <div class="col-6">
                   <span class="text-label">Date Out</span>
                   <div class="text-dese">
-                    <input class="form-control" type="text">
+                    <div class="row">
+                      <div class="col-8">
+                        <app-picker-date #DataIPDp_DateOut
+                          (getValue)="DataIPDp.DateOut=$event"></app-picker-date>
+                      </div>
+                      <div class="col-4">
+                        <app-input-time #DataIPDp_DateOutTime
+                          (getValue)="DataIPDp.DateOutTime=$event"></app-input-time>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -510,13 +608,13 @@
                 <div class="col-6">
                   <span class="text-label">Location</span>
                   <div class="text-dese">
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" [(ngModel)]="DataIPDp.Location">
                   </div>
                 </div>
               </div>
               <div class="row mb-2">
                 <div class="col-6 text-right">
-                  <button class="btn btn-md btn-primary">Apply</button>
+                  <button class="btn btn-md btn-primary" (click)="Apply_DataIPDp()">Apply</button>
                 </div>
               </div>
             </div>
@@ -525,43 +623,29 @@
                 <table class="table mb-0">
                   <thead>
                     <tr>
+                      <th></th>
                       <th>#</th>
-                      <th>DxType</th>
                       <th>Code Sys</th>
                       <th>ICDCM Code</th>
-                      <th>Diag Term</th>
+                      <th>Proc Term</th>
                       <th>DR</th>
-                      <th>Diag Date</th>
+                      <th>Date In</th>
+                      <th>Date Out</th>
+                      <th>Location</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td> - </td>
-                    </tr>
+                    <tr *ngFor="let item of ListDataIPDp">
+                      <th scope="row"><button class="btn btn-sm btn-danger" (click)="Delete_DataIPDp(item)">Delete</button></th>
+                      <th scope="row">{{item.index}}</th>
+                      <td>{{item.CodeSys}}</td>
+                      <td>{{item.ICDCMCode}}</td>
+                      <td>{{item.ProcTerm}}</td>
+                      <td>{{item.DR}}</td>
+                      <td>{{item.DateIN}}</td>
+                      <td>{{item.DateOut}}</td>
+                      <td>{{item.Location}}</td>
+                    </tr> 
                   </tbody>
                 </table>
               </div>
@@ -581,7 +665,7 @@
               <div class="col-6">
                 <span class="text-label">Invoice Number</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <input class="form-control" type="text" [(ngModel)]="DataInvoice.InvNumber">
                 </div>
               </div>
             </div>
@@ -589,7 +673,16 @@
               <div class="col-6">
                 <span class="text-label">Invoice DateTime</span>
                 <div class="text-dese">
-                  <input class="form-control" type="text">
+                  <div class="row">
+                    <div class="col-8">
+                      <app-picker-date #DataInvoice_InvDT
+                        (getValue)="DataInvoice.InvDT=$event"></app-picker-date>
+                    </div>
+                    <div class="col-4">
+                      <app-input-time #DataInvoice_InvTime
+                        (getValue)="DataInvoice.InvTime=$event"></app-input-time>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -598,7 +691,7 @@
                 <table class="table mb-0">
                   <thead>
                     <tr>
-                      <th><mat-checkbox class="example-margin" [(ngModel)]="checked">All</mat-checkbox></th>
+                      <th><mat-checkbox class="example-margin" [(ngModel)]="ChAll_Bill" (change)="CheckAll_Bill($event.checked)">All</mat-checkbox></th>
                       <th>Service Date</th>
                       <th>LC</th>
                       <th>QTY</th>
@@ -609,9 +702,20 @@
                   <tbody>
                     <tr *ngFor="let item of ListBill; index as i">
                       <td>
-                        <mat-checkbox class="example-margin" [(ngModel)]="checked"></mat-checkbox>
+                        <mat-checkbox class="example-margin" [(ngModel)]="item.checked" (change)="CheckSet_Bill($event.checked)"></mat-checkbox>
                       </td>
-                      <td><input class="form-control" type="text" [(ngModel)]="item.ServiceDate"></td>
+                      <td>
+                        <div class="row">
+                          <div class="col-8">
+                            <app-picker-date
+                              (getValue)="item.ServiceDate=$event"></app-picker-date>
+                          </div>
+                          <div class="col-4">
+                            <app-input-time
+                              (getValue)="item.ServiceTime=$event"></app-input-time>
+                          </div>
+                        </div>
+                      </td>
                       <td>{{item.LCCodeName}}</td>
                       <td><input class="form-control" type="text" [(ngModel)]="item.QTY"></td>
                       <td><input class="form-control" type="text" [(ngModel)]="item.UnitQYT"></td>

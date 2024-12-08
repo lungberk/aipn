@@ -40,7 +40,7 @@ export class CCT_Master_Param {
 export class CCT_MasterXML_Param {
     Hearder: CCT_MasterXML_Hearder_Param;
     ClaimAuth: CCT_MasterXML_ClaimAuth_Param;
-    ListOfIPADT: Array<CCT_MasterXML_IPADT_Param>;
+    IPADT: CCT_MasterXML_IPADT_Param;
     ListOfIPDx: Array<CCT_MasterXML_IPDx_Param>;
     ListOfIPDp: Array<CCT_MasterXML_IPDp_Param>;
     Invoice: CCT_MasterXML_Invoice_Param;
@@ -48,7 +48,7 @@ export class CCT_MasterXML_Param {
     constructor() {
         this.Hearder = new CCT_MasterXML_Hearder_Param();
         this.ClaimAuth = new CCT_MasterXML_ClaimAuth_Param();
-        this.ListOfIPADT = [];
+        this.IPADT = new CCT_MasterXML_IPADT_Param();
         this.ListOfIPDx = [];
         this.ListOfIPDp = [];
         this.Invoice = new CCT_MasterXML_Invoice_Param();
@@ -62,6 +62,7 @@ export class CCT_MasterXML_Hearder_Param {
     AuthorID: string;
     AuthorName: string;
     EffectiveDateTime: string;
+    EffectiveTime = "";
 
     constructor() {
         this.DocClass = "";
@@ -110,8 +111,8 @@ export class CCT_MasterXML_IPADT_Param {
     BirthDate: string;
     Sex: string;
     Status: string;
-    Provice: string;
-    Ampore: string;
+    Province: string;
+    Amphoe: string;
     National: string;
     AdmType: string;
     AdmSource: string;
@@ -123,6 +124,8 @@ export class CCT_MasterXML_IPADT_Param {
     AmdWT: string;
     DischargeWard: string;
     Dept: string;
+    AdmitTime = "";
+    DischargeTime = "";
     constructor() {
         this.AN = "";
         this.HN = "";
@@ -133,8 +136,8 @@ export class CCT_MasterXML_IPADT_Param {
         this.BirthDate = "";
         this.Sex = "";
         this.Status = "";
-        this.Provice = "";
-        this.Ampore = "";
+        this.Province = "";
+        this.Amphoe = "";
         this.National = "";
         this.AdmType = "";
         this.AdmSource = "";
@@ -177,6 +180,8 @@ export class CCT_MasterXML_IPDp_Param {
     DateIN: string;
     DateOut: string;
     Location: string;
+    DateINTime = "";
+    DateOutTime = "";
     constructor() {
         this.index = "";
         this.DxType = "";
@@ -210,13 +215,16 @@ export class CCT_MasterXML_BillItems_Param {
     LCCode: string;
     LCCodeName: string;
     LCNo: string;
-    ServiceDate: string;
+    ServiceDateTime: string;
     QTY: string;
     UnitQYT: string;
     ChargeAmt: string;
+    checked = false;
+    ServiceDate = "";
+    ServiceTime = "";
     constructor() {
         this.index = "";
-        this.ServiceDate = "";
+        this.ServiceDateTime = "";
         this.QTY = "";
         this.UnitQYT = "";
         this.ChargeAmt = "";
