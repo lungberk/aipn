@@ -1,9 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CCT_MasterXML_BillItems_Param, CCT_MasterXML_ClaimAuth_Param, CCT_MasterXML_Hearder_Param, CCT_MasterXML_Invoice_Param, CCT_MasterXML_IPADT_Param, CCT_MasterXML_IPDp_Param, CCT_MasterXML_IPDx_Param, CCT_MasterXML_Param } from 'src/app/core/models/param.models';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { CCT_Master_Param, CCT_MasterXML_BillItems_Param, CCT_MasterXML_ClaimAuth_Param, CCT_MasterXML_Hearder_Param, CCT_MasterXML_Invoice_Param, CCT_MasterXML_IPADT_Param, CCT_MasterXML_IPDp_Param, CCT_MasterXML_IPDx_Param, CCT_MasterXML_Param } from 'src/app/core/models/param.models';
 import { InputTimeComponent } from 'src/app/shared/ui/input-time/input-time.component';
 import { PickerDateComponent } from 'src/app/shared/ui/picker-date/picker-date.component';
 import { DateService } from 'src/app/core/services/date.service';
-import {  AdmSource, AdmType, Dept, DischStat, DischType, DxEnum, DxType, IDTYPE, MARRIAGE, NATION, SEX, STDCode, STDCodeLabel } from 'src/app/core/enums/enums';
+import { AdmSource, AdmType, Dept, DischStat, DischType, DxEnum, DxType, IDTYPE, MARRIAGE, NATION, SEX, STDCode, STDCodeLabel } from 'src/app/core/enums/enums';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ApiService } from 'src/app/core/services/api.service';
+import { AuthenticationService } from 'src/app/core/services/auth.service';
+import { MessageService } from 'src/app/core/services/message.service';
+declare const require;
+const xml2js = require("xml2js");
 @Component({
   selector: 'app-import-aipnxml',
   templateUrl: './import-aipnxml.component.html',
@@ -37,31 +44,40 @@ export class ImportAIPNXMLComponent implements OnInit {
   ChAll_Bill = false;
 
   IDTYPE = IDTYPE;
-  IDTYPEOptions = DxEnum.GetOptions(IDTYPE);  
+  IDTYPEOptions = DxEnum.GetOptions(IDTYPE);
   SEX = SEX;
   SEXOptions = DxEnum.GetOptions(SEX);
   MARRIAGE = MARRIAGE;
-  MARRIAGEOptions = DxEnum.GetOptions(MARRIAGE);  
+  MARRIAGEOptions = DxEnum.GetOptions(MARRIAGE);
   NATION = NATION;
-  NATIONOptions = DxEnum.GetOptions(NATION);  
+  NATIONOptions = DxEnum.GetOptions(NATION);
   AdmType = AdmType;
-  AdmTypeOptions = DxEnum.GetOptions2(AdmType);  
+  AdmTypeOptions = DxEnum.GetOptions2(AdmType);
   AdmSource = AdmSource;
-  AdmSourceOptions = DxEnum.GetOptions2(AdmSource);  
+  AdmSourceOptions = DxEnum.GetOptions2(AdmSource);
   DischStat = DischStat;
-  DischStatOptions = DxEnum.GetOptions(DischStat);  
+  DischStatOptions = DxEnum.GetOptions(DischStat);
   DischType = DischType;
-  DischTypeOptions = DxEnum.GetOptions(DischType);  
+  DischTypeOptions = DxEnum.GetOptions(DischType);
   Dept = Dept;
-  DeptOptions = DxEnum.GetOptions2(Dept);  
+  DeptOptions = DxEnum.GetOptions2(Dept);
   DxType = DxType;
-  DxTypeOptions = DxEnum.GetOptions(DxType);  
+  DxTypeOptions = DxEnum.GetOptions(DxType);
   STDCode = STDCode;
   STDCodeOptions = DxEnum.GetOptions(STDCode);
   STDCodeLabel = STDCodeLabel;
-  
+  base64Output: any;
+  FileName = "";
+  filexml: any;
+  @ViewChild("_filexml", { static: true }) public _filexml: ElementRef;
+  employees$: Observable<Array<any>>;
+  public xmlItems: any;
   constructor(
-    public date: DateService
+    private http: HttpClient,
+    public date: DateService,
+    private api: ApiService,
+    private auth: AuthenticationService,
+    private msg: MessageService
   ) { }
 
   ngOnInit() {
@@ -294,7 +310,7 @@ export class ImportAIPNXMLComponent implements OnInit {
     this.DataIPDx = new CCT_MasterXML_IPDx_Param();
     this.ListDataIPDx = new Array<CCT_MasterXML_IPDx_Param>();
     this.DataIPDp = new CCT_MasterXML_IPDp_Param();
-    this.ListDataIPDp = new Array<CCT_MasterXML_IPDp_Param>();  
+    this.ListDataIPDp = new Array<CCT_MasterXML_IPDp_Param>();
     this.DataInvoice = new CCT_MasterXML_Invoice_Param();
     this.DataBill = new CCT_MasterXML_BillItems_Param();
     this.ListBill = new Array<CCT_MasterXML_BillItems_Param>();
@@ -310,6 +326,43 @@ export class ImportAIPNXMLComponent implements OnInit {
     this.DataIPDp_DateOut.Clear();
     this.DataIPDp_DateOutTime.Clear();
     this.SetDefault();
+  }
+  handleUpload(event) {
+    // console.log("event", event);
+    // console.log("event.target.files", event.target.files);
 
+    if (!event.target.files.length) {
+      this.FileName = "";
+      this.base64Output = "";
+      return;
+    }
+    const file = event.target.files[0];
+
+    // console.log("file", file);
+    this.FileName = file.name;
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.base64Output = reader.result;
+      this.LoadXMLData(this.base64Output);
+    };
+  }
+  clearvalue() {
+    this.FileName = "";
+    this.base64Output = "";
+    this._filexml.nativeElement.val = "";
+  }
+  LoadXMLData(base64Output) {
+    const param = new CCT_Master_Param();
+    param.FileName = this.FileName;
+    param.FileDataBase64 = base64Output;
+    this.api.LoadMasterXMLFile(param).subscribe(rs => {
+      this.clearvalue();
+      if (rs.ResultStatus) {
+        this.msg.showSuccess("บันทึกข้อมูลเรียบร้อย");
+      } else if (rs.ErrorMessage) {
+        this.msg.showError(rs.ErrorMessage);
+      }
+    });
   }
 }

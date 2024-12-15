@@ -3,7 +3,8 @@
   <div class="card-box">
     <div>
       <button class="btn btn-primary btn-lg mr-2" (click)="GenXML()">Gen XML</button>
-      <button class="btn btn-info btn-lg mr-2">Import XML To View</button>
+      <input #_filexml accept="application/xml" type="file" (change)="handleUpload($event)" hidden>
+      <button class="btn btn-info btn-lg mr-2" (click)="_filexml.click()">Import XML To View</button>
       <button class="btn btn-warning btn-lg" (click)="Clear()">Clear</button>
     </div>
     <hr />
