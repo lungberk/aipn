@@ -5,22 +5,28 @@
         <ul class="metismenu" id="side-menu" #sideMenu>
 
             <li class="menu-title">Navigation</li>
-            <li>
-                <a class="waves-effect" [routerLink]="['/exportaipn']">
+            <li *ngIf="IsAIPN">
+                <a class="waves-effect" [routerLink]="['/aipn/exportaipn']">
                     <i class="remixicon-dashboard-line"></i>
                     <span> Export AIPN Cliam </span>
                 </a>
             </li>
-            <li>
-                <a class="waves-effect" [routerLink]="['/uploadaipn']">
+            <li *ngIf="IsAIPN">
+                <a class="waves-effect" [routerLink]="['/aipn/uploadaipn']">
                     <i class="remixicon-dashboard-line"></i>
                     <span> Upload AIPN </span>
                 </a>
             </li>
-            <li>
-                <a class="waves-effect" [routerLink]="['/importaipn']">
+            <li *ngIf="IsAIPN">
+                <a class="waves-effect" [routerLink]="['/aipn/importaipn']">
                     <i class="remixicon-dashboard-line"></i>
                     <span> Import AIPN To XML</span>
+                </a>
+            </li>
+            <li *ngIf="IsCIPN">
+                <a class="waves-effect" [routerLink]="['/cipn/exportcipn']">
+                    <i class="remixicon-dashboard-line"></i>
+                    <span> CIPN</span>
                 </a>
             </li>
         </ul>

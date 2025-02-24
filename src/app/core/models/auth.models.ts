@@ -9,4 +9,6 @@ export class User {
 }
 export class Config {
     ws: string;
+    aipn = "";
+    cipn = "";
 }

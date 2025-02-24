@@ -6,10 +6,8 @@ import { NgbDatepickerModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstr
 import { UIModule } from '../../shared/ui/ui.module';
 
 import { DefaultDashboardComponent } from './default/default.component';
-import { ModAIPNRoutingModule } from './mod-aipn-routing';
-import { ExportAIPNCliamComponent } from './export-aipncliam/export-aipncliam.component';
-import { UploadAIPNXMLComponent } from './upload-aipnxml/upload-aipnxml.component';
-import { ImportAIPNXMLComponent } from './import-aipnxml/import-aipnxml.component';
+import { ModCIPNRoutingModule } from './mod-cipn-routing';
+import { ExportCIPNComponent } from './export-cipn/export-cipn.component';
 import { 
   MatExpansionModule,
   MatCheckboxModule,
@@ -20,9 +18,7 @@ import {
 @NgModule({
   declarations: [
     DefaultDashboardComponent,
-    ExportAIPNCliamComponent,
-    UploadAIPNXMLComponent,
-    ImportAIPNXMLComponent
+    ExportCIPNComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +26,7 @@ import {
     NgbDropdownModule,
     NgbDatepickerModule,
     UIModule,
-    ModAIPNRoutingModule,
+    ModCIPNRoutingModule,
     MatExpansionModule,
     MatCheckboxModule,
     MatDatepickerModule,
@@ -41,4 +37,4 @@ import {
     MatDatepickerModule
   ]
 })
-export class ModAIPNModule { }
+export class ModCIPNModule { }

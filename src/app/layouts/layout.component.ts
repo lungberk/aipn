@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { AuthenticationService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-layout',
@@ -9,9 +10,12 @@ export class LayoutComponent implements OnInit, AfterViewInit {
 
   isCondensed = false;
 
-  constructor() { }
+  constructor(
+    public auth: AuthenticationService
+  ) { }
 
   ngOnInit() {
+    this.auth.setConfig();
   }
 
   ngAfterViewInit() {

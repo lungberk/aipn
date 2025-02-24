@@ -17,6 +17,11 @@ export class CCT_Master_Param {
     FileDataBase64: string;
     lstSetup: Array<string>;
 
+    AuthenCode = "";
+    AuthenDateTime = "";
+    AuthenDate = "";
+    AuthenTime = "";
+
     constructor() {
         this.ServerDB = "";
         this.AN = "";

@@ -1,3 +1,5 @@
 {
-    "ws":"http://localhost:1233/AIPN.svc/"
+    "ws":"http://localhost:1233/AIPN.svc/",
+    "aipn":"1",
+    "cipn":"1"
 }

@@ -50,12 +50,13 @@ export class AuthenticationService {
         this.user = null;
     }
     setConfig() {
-
         this.http.get("assets/config.txt", { responseType: 'text' }).subscribe(data => {
             console.log("config data", data);
             const rs: Config = JSON.parse(data);
             const config = new Config();
             config.ws = rs.ws + "/AIPN.svc/";
+            config.aipn = rs.aipn;
+            config.cipn = rs.cipn;
             localStorage.setItem("AIPNConfig", JSON.stringify(config));
         });
 

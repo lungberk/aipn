@@ -14,12 +14,15 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   menu: any;
 
   @ViewChild('sideMenu', { static: false }) sideMenu: ElementRef;
-
+  IsAIPN = false;
+  IsCIPN = false;
   constructor(
     private auth: AuthenticationService,
     private router: Router,) { }
 
   ngOnInit() {
+    this.IsAIPN = this.auth.getConfig.aipn=="1"?true:false;
+    this.IsCIPN = this.auth.getConfig.cipn=="1"?true:false;
   }
 
   ngAfterViewInit() {

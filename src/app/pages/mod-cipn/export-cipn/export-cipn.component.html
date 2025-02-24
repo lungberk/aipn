@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <app-page-title title="Export CIPN" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  <div class="row">
+    <div class="col-12">
+      <div class="card-box">
+        <h4 class="header-title">Export CIPN</h4>
+        <div class="row">
+          <div class="col-12">
+            <div class="p-2">
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">AN</label>
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" [(ngModel)]="data.AN">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Authen Code</label>
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" [(ngModel)]="data.AuthenCode">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Authen DateTime</label>
+                <div class="col-sm-6">
+                  <div class="row">
+                    <div class="col-8">
+                      <app-picker-date #data_AuthenDate
+                        (getValue)="data.AuthenDate=$event"></app-picker-date>
+                    </div>
+                    <div class="col-4">
+                      <app-input-time #data_AuthenTime
+                        (getValue)="data.AuthenTime=$event"></app-input-time>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-2 "></div>
+                <div class="col-sm-8 text-left">
+                  <button class="btn btn-md btn-info" (click)="export()" style="width: 120px;">Export</button>
+                </div>
+              </div>
+              <hr>              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
